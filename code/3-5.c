@@ -1,18 +1,28 @@
 #include <stdio.h>
 
-int main(int argc, const char* argv[]) {
+int main(int argc, const char* argv[]){
     const char* filename = "numbers.txt";
 
-    FILE* fp = fopen(filename, "r");
-    if (fp == NULL) {
+    FILE* fp = fopen(filename,"r");
+    if(fp = NULL){
         return 0;
     }
 
-
     int sum = 0;
+    char buffer[128];
 
+    while (fgets(buffer, sizeof(buffer), fp) != NULL) {
+        int value;
 
-    printf("sum: %d\n", sum);
+        if (sscanf(buffer, "%d", &value) == 1) {
+            sum += value;
+        }
+        else {
+            fprintf(stderr, "invalid value: %s", buffer);
+        }
+    }
+
+    printf("sum: %d\n",sum);
     fclose(fp);
     return 0;
 }
