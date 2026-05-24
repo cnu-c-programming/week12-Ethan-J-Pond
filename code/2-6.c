@@ -1,15 +1,20 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
 
-int main(int argc, const char* argv[]) {
-    if (argc < 3)
+int main(int argc, const char* argv[]){
+    if(argc < 3)
         return 0;
-
-    FILE* fp = fopen(argv[1], "r");
+    
+    FILE* fp = fopen(argv[1],"r");
     const char* target_str = argv[2];
+    
+    char line[3000];
+    while (fgets(line, sizeof(line), fp) != NULL) {
 
-
+        if (strstr(line, target_str) != NULL) {
+            printf("%s", line);
+        }
+    }
     
     fclose(fp);
 }
-
