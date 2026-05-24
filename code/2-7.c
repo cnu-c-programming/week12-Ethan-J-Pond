@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 typedef struct config {
     char InputFileName[64];
@@ -9,11 +9,21 @@ typedef struct config {
     unsigned long long Address;
 } Config;
 
-void config_parser(Config* config_ptr) {
+void config_parser(Config* config_ptr){
+    FILE* fp = fopen("config.txt", "r");
 
+    if (fp == NULL)
+        return;
+
+    fscanf(fp, "%s", config_ptr->InputFileName);
+    fscanf(fp, "%d", &config_ptr->Options);
+    fscanf(fp, "%s", config_ptr->SectionName);
+    fscanf(fp, "%llu", &config_ptr->Address);
+
+    fclose(fp);
 }
 
-int main(int argc, const char* argv[]) {
+int main(int argc, const char* argv[]){
     Config config;
     config_parser(&config);
 
@@ -24,4 +34,3 @@ int main(int argc, const char* argv[]) {
         config.Address);
     return 0;
 }
-
