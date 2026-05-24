@@ -16,10 +16,10 @@ void config_parser(Config* config_ptr){
     if (fp == NULL)
         return;
 
-    fscanf(fp, "%s", config_ptr->InputFileName);
-    fscanf(fp, "%d", &config_ptr->Options);
-    fscanf(fp, "%s", config_ptr->SectionName);
-    fscanf(fp, "%llx", &config_ptr->Address);
+    fscanf(fp, "InputFileName=%s", config_ptr->InputFileName);
+    fscanf(fp, "Options=%d", &config_ptr->Options);
+    fscanf(fp, "SectionName=%s", config_ptr->SectionName);
+    fscanf(fp, "Address=%llx", &config_ptr->Address);
 
     fclose(fp);
 }
