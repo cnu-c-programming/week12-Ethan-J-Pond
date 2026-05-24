@@ -12,8 +12,8 @@ int main(int argc, const char* argv[]){
     Student students[64];
     
     while(!feof(fp)){
-        if(fscanf(fp,"%s %d",students[count].name,&stduents[count].score) == 2)
-            counts++;
+        if(fscanf(fp,"%s %d",students[count].name,&students[count].score) == 2)
+            count++;
     }
     int max = 0;
     float avg = 0;
