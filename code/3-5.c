@@ -4,7 +4,7 @@ int main(int argc, const char* argv[]){
     const char* filename = "numbers.txt";
 
     FILE* fp = fopen(filename,"r");
-    if(fp = NULL){
+    if(fp == NULL){
         return 0;
     }
 
@@ -18,7 +18,7 @@ int main(int argc, const char* argv[]){
             sum += value;
         }
         else {
-            fprintf(stderr, "invalid value: %s", buffer);
+            fprintf(stderr, "invalid input %s", buffer);
         }
     }
 
